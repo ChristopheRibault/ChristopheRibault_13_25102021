@@ -2,10 +2,12 @@ import { HeroContent, Features } from '../layout'
 
 function HomePage() {
   return (
-    <div className="homePage">
-      <HeroContent />
-      <Features />
-    </div>
+    <main>
+      <div className="homePage">
+        <HeroContent />
+        <Features />
+      </div>
+    </main>
   );
 }
 
