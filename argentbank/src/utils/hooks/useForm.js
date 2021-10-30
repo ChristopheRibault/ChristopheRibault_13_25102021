@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const useForm = callback => {
   const [values, setValues] = useState({});
@@ -12,7 +12,7 @@ const useForm = callback => {
     },
     handleSubmit: e => {
       e.preventDefault();
-      callback();
+      callback(values);
     }
   };
 };

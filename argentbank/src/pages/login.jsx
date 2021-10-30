@@ -1,12 +1,21 @@
-import { useForm } from '../utils/hooks'
-import fetcher from '../utils/fetcher';
+import { useState } from 'react';
+import { useForm, useFetch } from '../utils/hooks'
 
 function Login() {
 
-  const { values, handleChange, handleSubmit } = useForm(() => {
-    fetcher.post('/user/login', values)
-      .then(console.log)
+  const [fetchBody, setFetchBody] = useState(null)
+
+  const { values, handleChange, handleSubmit } = useForm((values) => {
+    setFetchBody(values);
   });
+
+  const { isLoading, data, error } = useFetch(
+    {
+      verb: 'post',
+      url: '/user/login',
+      body: fetchBody,
+    }
+  )
 
   return (
     <main className="main bg-dark">
