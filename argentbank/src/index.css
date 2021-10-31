@@ -202,6 +202,16 @@ body {
   font-size: 1.2rem;
 }
 
+.error-message {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: .5em;
+  margin-top: .5em;
+  font-size: .7em;
+  text-align: left;
+}
+
 .footer {
   display: flex;
   justify-content: center;

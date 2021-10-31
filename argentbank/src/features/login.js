@@ -1,10 +1,18 @@
-import { createAction, createReducer } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
-export const setToken = createAction('login/setToken')
+const { actions, reducer } = createSlice({
+  name: 'login',
+  initialState: null,
+  reducers: {
+    setToken: (state, action) => {
+      if (action?.payload) {
+        localStorage.setItem('token', action.payload.token);
+        return action.payload;
+      };
+      return state;
+    }
+  }
+});
 
-export default createReducer('light', (builder) =>
-  builder
-    .addCase(setToken, (state, action) => {
-      return action.payload;
-    })
-);
+export const { setToken } = actions;
+export default reducer;
