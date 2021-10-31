@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const instance = axios.create({
   baseURL: 'http://localhost:3001/api/v1/',
   timeout: 1000,
-  headers: {'autorization': 'Bearer'},
+  headers: {'authorization': `Bearer ${localStorage.getItem('token')}`},
 });
 
 export default function useFetch({ verb, url, body }) {
@@ -13,12 +13,12 @@ export default function useFetch({ verb, url, body }) {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    if (!url || !verb || !body) return
+    if (!url || !verb) return
     setLoading(true)
     setError(null)
     async function fetchData() {
       try {
-        const response = await instance[verb](url, body);
+        const response = await instance[verb](url, body ?? {});
         const data = response.data.body;
         setData(data)
       } catch (err) {

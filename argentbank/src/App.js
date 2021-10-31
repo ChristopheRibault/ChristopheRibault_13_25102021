@@ -4,7 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Footer, Header } from './layout'
-import { HomePage, Login } from "./pages";
+import { HomePage, Login, UserPage } from "./pages";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           <Switch>
             <Route exact path='/'><HomePage /></Route>
             <Route exact path='/login'><Login /></Route>
-            <Route exact path='/profile'></Route>
+            <Route exact path='/profile'><UserPage /></Route>
           </Switch>
         <Footer />
       </Router>
