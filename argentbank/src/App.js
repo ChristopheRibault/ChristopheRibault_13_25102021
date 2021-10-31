@@ -3,20 +3,24 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { Footer, Header } from './layout'
+import { Layout } from './components'
 import { HomePage, Login, UserPage } from "./pages";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
-          <Switch>
-            <Route exact path='/'><HomePage /></Route>
-            <Route exact path='/login'><Login /></Route>
-            <Route exact path='/profile'><UserPage /></Route>
-          </Switch>
-        <Footer />
+        <Switch>
+          <Route exact path='/'>
+            <Layout Component={ HomePage } />
+          </Route>
+          <Route exact path='/login'>
+            <Layout Component={ Login } />
+          </Route>
+          <Route exact path='/profile'>
+            <Layout Component={ UserPage } />
+          </Route>
+        </Switch>
       </Router>
     </div>
   );
