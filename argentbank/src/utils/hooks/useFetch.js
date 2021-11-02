@@ -2,17 +2,20 @@ import { useState, useEffect } from 'react';
 import fetcher from '../axios';
 
 export default function useFetch({ verb, url, body }) {
-  const [data, setData] = useState({})
-  const [isLoading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-
+  const [data, setData] = useState({});
+  const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  
   useEffect(() => {
-    if (!url || !verb) return
-    setLoading(true)
-    setError(null)
+    if (!url || !verb) return;
+    const headers = {
+      'authorization': `Bearer ${localStorage.getItem('token')}`
+    };
+    setLoading(true);
+    setError(null);
     async function fetchData() {
       try {
-        const response = await fetcher[verb](url, body ?? {});
+        const response = await fetcher[verb](url, body ?? {}, { headers });
         const data = response.data.body;
         setData(data)
       } catch (err) {
