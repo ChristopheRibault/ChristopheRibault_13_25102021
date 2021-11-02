@@ -9,9 +9,13 @@ const { actions, reducer } = createSlice({
         return action.payload;
       };
       return state;
-    }
+    },
+
+    reset: () => {
+      return null;
+    },
   }
 });
 
-export const { set } = actions;
+export const { set, reset } = actions;
 export default reducer;

@@ -14,7 +14,6 @@ function Login() {
     try {
       const response = await fetcher.post('/user/login', values);
       const data = response.data.body;
-
       store.dispatch(loginActions.setToken(data));
       setData(data);
 

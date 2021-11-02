@@ -10,9 +10,14 @@ const { actions, reducer } = createSlice({
         return action.payload;
       };
       return state;
+    },
+
+    removeToken: () => {
+      localStorage.removeItem('token');
+      return null;
     }
   }
 });
 
-export const { setToken } = actions;
+export const { setToken, removeToken } = actions;
 export default reducer;
