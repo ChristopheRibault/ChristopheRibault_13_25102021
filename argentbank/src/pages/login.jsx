@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { useForm, useFetch } from '../utils/hooks';
 import * as loginActions from '../features/login';
 import store from '../utils/store';
@@ -19,6 +20,7 @@ function Login() {
 
   if (data?.token) {
     store.dispatch(loginActions.setToken(data));
+    return <Redirect to="/profile" />
   }
 
   return (

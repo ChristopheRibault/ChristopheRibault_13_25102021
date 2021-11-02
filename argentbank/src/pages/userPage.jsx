@@ -1,4 +1,6 @@
-import { useFetch } from "../utils/hooks";
+import store from '../utils/store';
+import * as usersActions from '../features/users';
+import { useFetch } from '../utils/hooks';
 
 function UserPage() {
 
@@ -9,6 +11,14 @@ function UserPage() {
 
   if (isLoading) {
     return <p>Loading...</p>
+  }
+
+  if (error) {
+    return <p>You are not connected</p>
+  }
+
+  if (data) {
+    store.dispatch(usersActions.set(data))
   }
 
   return (
