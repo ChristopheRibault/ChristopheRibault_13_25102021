@@ -1,25 +1,30 @@
 import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { useForm, useFetch } from '../utils/hooks';
+import { useForm } from '../utils/hooks';
+import fetcher from '../utils/axios';
 import * as loginActions from '../features/login';
 import store from '../utils/store';
 
 function Login() {
 
-  const [ fetchBody, setFetchBody ] = useState(null);
-  const { data, error } = useFetch(
-    {
-      verb: 'post',
-      url: '/user/login',
-      body: fetchBody,
+  const [ data, setData ] = useState({});
+  const [ error, setError ] = useState(false);
+  const { values, handleChange, handleSubmit } = useForm(async (values) => {
+
+    try {
+      const response = await fetcher.post('/user/login', values);
+      const data = response.data.body;
+
+      store.dispatch(loginActions.setToken(data));
+      setData(data);
+
+    } catch(error) {
+      setError(true)
     }
-  );
-  const { values, handleChange, handleSubmit } = useForm((values) => {
-    setFetchBody(values);
+
   });
 
   if (data?.token) {
-    store.dispatch(loginActions.setToken(data));
     return <Redirect to="/profile" />
   }
 
