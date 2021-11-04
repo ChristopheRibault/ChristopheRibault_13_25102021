@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const { actions, reducer } = createSlice({
   name: 'user',
@@ -14,7 +14,7 @@ const { actions, reducer } = createSlice({
     reset: () => {
       return null;
     },
-  }
+  },
 });
 
 export const { set, reset } = actions;

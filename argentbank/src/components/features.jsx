@@ -38,7 +38,7 @@ const Features = function (props) {
         </p>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default Features;

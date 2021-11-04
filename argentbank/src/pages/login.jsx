@@ -18,13 +18,13 @@ function Login() {
       setData(data);
 
     } catch(error) {
-      setError(true)
+      setError(true);
     }
 
   });
 
   if (data?.token) {
-    return <Redirect to="/profile" />
+    return <Redirect to="/profile" />;
   }
 
   return (

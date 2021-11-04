@@ -7,8 +7,8 @@ import { Account } from '../components';
 
 function UserPage() {
 
-  const [editionMode, setEditionMode] = useState(false);
-  const [userInfo, setUserInfo] = useState({});
+  const [ editionMode, setEditionMode ] = useState(false);
+  const [ userInfo, setUserInfo ] = useState({});
 
   const { isLoading, data, error } = useFetch({
     verb: 'post',
@@ -16,7 +16,7 @@ function UserPage() {
   });
   
   useEffect(() => {
-    setUserInfo(data)
+    setUserInfo(data);
   }, [data]);
 
   const { values, handleChange, handleSubmit } = useForm(async (values) => {
@@ -24,7 +24,7 @@ function UserPage() {
 
     try {
       const headers = {
-        'authorization': `Bearer ${localStorage.getItem('token')}`
+        'authorization': `Bearer ${localStorage.getItem('token')}`,
       };
       fetcher.put('/user/profile', values, { headers });
       setUserInfo(values);
@@ -36,15 +36,15 @@ function UserPage() {
   });
 
   if (isLoading) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
 
   if (error) {
-    return <p>You are not connected</p>
+    return <p>You are not connected</p>;
   }
 
   if (data) {
-    store.dispatch(usersActions.set(data))
+    store.dispatch(usersActions.set(data));
   }
 
   return (

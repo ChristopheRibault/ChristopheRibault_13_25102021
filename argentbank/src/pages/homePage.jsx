@@ -1,4 +1,4 @@
-import { HeroContent, Features } from '../components'
+import { HeroContent, Features } from '../components';
 
 function HomePage() {
   return (

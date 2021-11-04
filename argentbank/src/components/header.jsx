@@ -7,13 +7,13 @@ import logo from '../assets/img/argentBankLogo.png';
 
 const Header = function () {
 
-  const firstName = useSelector(state => state.user?.firstName || 'invited')
-  const isLoggedIn = useSelector(state => !!state.login?.token)
+  const firstName = useSelector(state => state.user?.firstName || 'invited');
+  const isLoggedIn = useSelector(state => !!state.login?.token);
 
   const logout = () => {
     store.dispatch(loginActions.removeToken());
     store.dispatch(usersActions.reset());
-  }
+  };
 
   const HeaderRight = () => isLoggedIn ?
     <div>
@@ -29,7 +29,7 @@ const Header = function () {
         <i className="fa fa-user-circle"></i>{' '}
         Sign In
       </Link>
-    </div>
+    </div>;
 
   return (
     <header>
@@ -45,7 +45,7 @@ const Header = function () {
         <HeaderRight />
       </nav>
     </header>
-  )
-}
+  );
+};
 
 export default Header;

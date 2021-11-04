@@ -11,6 +11,6 @@ const Account = function ({ title, amount, description }) {
       </div>
     </section>
   );
-}
+};
 
 export default Account;

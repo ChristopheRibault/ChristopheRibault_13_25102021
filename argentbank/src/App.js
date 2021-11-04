@@ -2,19 +2,19 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from "react-router-dom";
-import { useEffect } from "react";
-import { Layout } from './components'
-import { HomePage, Login, UserPage } from "./pages";
-import store from "./utils/store";
+} from 'react-router-dom';
+import { useEffect } from 'react';
+import { Layout } from './components';
+import { HomePage, Login, UserPage } from './pages';
+import store from './utils/store';
 import * as loginActions from './features/login';
 
 function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    store.dispatch(loginActions.setToken({ token }))
-  }, [])
+    store.dispatch(loginActions.setToken({ token }));
+  }, []);
 
   return (
     <div className="App">

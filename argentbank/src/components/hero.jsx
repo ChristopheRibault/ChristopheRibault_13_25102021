@@ -9,7 +9,7 @@ const HeroContent = function (props) {
       <p className="text">Open a savings account with Argent Bank today!</p>
     </section>
   </div>
-  )
-}
+  );
+};
 
 export default HeroContent;

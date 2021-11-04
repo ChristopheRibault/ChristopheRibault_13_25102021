@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const { actions, reducer } = createSlice({
   name: 'login',
@@ -15,8 +15,8 @@ const { actions, reducer } = createSlice({
     removeToken: () => {
       localStorage.removeItem('token');
       return null;
-    }
-  }
+    },
+  },
 });
 
 export const { setToken, removeToken } = actions;
