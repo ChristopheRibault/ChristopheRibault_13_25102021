@@ -20,7 +20,7 @@ const Header = function () {
       <i className="fa fa-user-circle"></i>{' '}
       <span>{ firstName }</span>{' '}
       <Link className="main-nav-item" to='/' onClick={logout}>
-        <i class="fa fa-sign-out"></i>{' '}
+        <i className="fa fa-sign-out"></i>{' '}
         Sign Out
       </Link>
     </div> :
