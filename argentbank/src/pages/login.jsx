@@ -29,7 +29,7 @@ function Login() {
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" value={values.password || ''} onChange={handleChange}/>
-            {login.error &&
+            {login?.error &&
               <div className="error-message">Error: Unknown user or wrong password</div>
             }
           </div>

@@ -38,7 +38,7 @@ const { actions, reducer } = createSlice({
 
     removeToken: () => {
       localStorage.removeItem('token');
-      return null;
+      return initialState;
     },
   },
 });
