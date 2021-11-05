@@ -1,56 +1,37 @@
 import { useState, useEffect } from 'react';
-import store from '../utils/store';
-import * as usersActions from '../features/users';
-import { useFetch, useForm } from '../utils/hooks';
-import fetcher from '../utils/axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchOrUpdateUser } from '../features/users';
+import { useForm } from '../utils/hooks';
 import { Account } from '../components';
 
 function UserPage() {
 
   const [ editionMode, setEditionMode ] = useState(false);
-  const [ userInfo, setUserInfo ] = useState({});
-
-  const { isLoading, data, error } = useFetch({
-    verb: 'post',
-    url: '/user/profile',
-  });
-  
-  useEffect(() => {
-    setUserInfo(data);
-  }, [data]);
+  const dispatch = useDispatch();
 
   const { values, handleChange, handleSubmit } = useForm(async (values) => {
     setEditionMode(false);
-
-    try {
-      const headers = {
-        'authorization': `Bearer ${localStorage.getItem('token')}`,
-      };
-      fetcher.put('/user/profile', values, { headers });
-      setUserInfo(values);
-
-    } catch (error) {
-      console.log(error);
-    }
-
+    dispatch(fetchOrUpdateUser(values));
   });
 
-  if (isLoading) {
+  useEffect(() => {
+    dispatch(fetchOrUpdateUser());
+  }, [dispatch]);
+
+  const user = useSelector(state => state.user);
+
+  if (user?.status === 'rejected') {
+    return <span>Il y a un problème</span>;
+  }
+
+  if (user?.status === 'pending' || user?.status === 'void') {
     return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>You are not connected</p>;
-  }
-
-  if (data) {
-    store.dispatch(usersActions.set(data));
   }
 
   return (
     <main className="main bg-dark">
       <div className="header">
-        <h1>Welcome back<br />{`${userInfo.firstName} ${userInfo.lastName}`}</h1>
+        <h1>Welcome back<br />{`${user?.data?.firstName} ${user?.data?.lastName}`}</h1>
         {!editionMode &&
           <button onClick={() => setEditionMode(true)} className="edit-button">Edit Name</button>
         }

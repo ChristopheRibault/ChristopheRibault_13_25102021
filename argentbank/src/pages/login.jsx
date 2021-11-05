@@ -18,6 +18,7 @@ function Login() {
       setData(data);
 
     } catch(error) {
+      console.log({ error });
       setError(true);
     }
 

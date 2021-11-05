@@ -7,7 +7,7 @@ import logo from '../assets/img/argentBankLogo.png';
 
 const Header = function () {
 
-  const firstName = useSelector(state => state.user?.firstName || 'invited');
+  const firstName = useSelector(state => state.user?.data?.firstName || 'invited');
   const isLoggedIn = useSelector(state => !!state.login?.token);
 
   const logout = () => {
