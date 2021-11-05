@@ -32,7 +32,6 @@ const Header = function () {
     </div>;
 
   return (
-    <header>
       <nav className="main-nav">
         <a className="main-nav-logo" href="./index.html">
           <img
@@ -44,7 +43,6 @@ const Header = function () {
         </a>
         <HeaderRight />
       </nav>
-    </header>
   );
 };
 

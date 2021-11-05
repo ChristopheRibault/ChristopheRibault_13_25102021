@@ -36,17 +36,19 @@ function UserPage() {
           <button onClick={() => setEditionMode(true)} className="edit-button">Edit Name</button>
         }
         {editionMode && 
-          <form onSubmit={handleSubmit}>
-            <div className="input-wrapper">
-              <label htmlFor="firstName">Firstname</label>
-              <input type="text" id="firstName" name="firstName" value={values.firstName || ''} onChange={handleChange} />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="lastName">Lastname</label>
-              <input type="text" id="lastName" name="lastName" value={values.lastName || ''} onChange={handleChange} />
-            </div>
-            <button type='submit' className="edit-button">Valider</button>
-          </form>
+          <section className='edit-form'>
+            <form onSubmit={handleSubmit}>
+              <div className="input-wrapper">
+                <label htmlFor="firstName">Firstname</label>
+                <input type="text" id="firstName" name="firstName" value={values.firstName || ''} onChange={handleChange} />
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="lastName">Lastname</label>
+                <input type="text" id="lastName" name="lastName" value={values.lastName || ''} onChange={handleChange} />
+              </div>
+              <button type='submit' className="edit-button">Valider</button>
+            </form>
+          </section>
         }
       </div>
 
