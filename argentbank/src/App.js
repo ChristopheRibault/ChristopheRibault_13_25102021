@@ -13,7 +13,9 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    store.dispatch(loginActions.setToken({ token }));
+    // getItems returns 'null' as string when no token is set
+    if (token && token !== 'null')
+      store.dispatch(loginActions.setToken({ token }));
   }, []);
 
   return (

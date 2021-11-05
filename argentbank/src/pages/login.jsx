@@ -1,30 +1,18 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { useForm } from '../utils/hooks';
-import fetcher from '../utils/axios';
-import * as loginActions from '../features/login';
-import store from '../utils/store';
+import { logUserIn } from '../features/login';
 
 function Login() {
 
-  const [ data, setData ] = useState({});
-  const [ error, setError ] = useState(false);
+  const dispatch = useDispatch();
   const { values, handleChange, handleSubmit } = useForm(async (values) => {
-
-    try {
-      const response = await fetcher.post('/user/login', values);
-      const data = response.data.body;
-      store.dispatch(loginActions.setToken(data));
-      setData(data);
-
-    } catch(error) {
-      console.log({ error });
-      setError(true);
-    }
-
+    dispatch(logUserIn(values));
   });
 
-  if (data?.token) {
+  const login = useSelector(state => state.login);
+
+  if (login?.data?.token) {
     return <Redirect to="/profile" />;
   }
 
@@ -41,7 +29,7 @@ function Login() {
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" value={values.password || ''} onChange={handleChange}/>
-            {error &&
+            {login.error &&
               <div className="error-message">Error: Unknown user or wrong password</div>
             }
           </div>
