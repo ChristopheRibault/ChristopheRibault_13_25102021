@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import fetcher from '../utils/axios';
+import fetcher, { fetchReducers } from '../utils/axios';
 
 const initialState = {
   status: 'void',
@@ -41,39 +41,7 @@ const { actions, reducer } = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    fetching: (draft) => {
-      if (draft.status === 'void') {
-        draft.status = 'pending';
-        return;
-      }
-      if (draft.status === 'rejected') {
-        draft.error = null;
-        draft.status = 'pending';
-        return;
-      }
-      if (draft.status === 'resolved') {
-        draft.status = 'updating';
-        return;
-      }
-      return;
-    },
-    resolved: (draft, action) => {
-      if (draft.status === 'pending' || draft.status === 'updating') {
-        draft.data = action.payload;
-        draft.status = 'resolved';
-        return;
-      }
-      return;
-    },
-    rejected: (draft, action) => {
-      if (draft.status === 'pending' || draft.status === 'updating') {
-        draft.status = 'rejected';
-        draft.error = action.payload;
-        draft.data = null;
-        return;
-      }
-      return;
-    },
+    ...fetchReducers,
 
     reset: () => {
       return initialState;
