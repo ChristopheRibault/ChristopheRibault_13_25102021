@@ -8,6 +8,7 @@ import { Layout } from './components';
 import { HomePage, Login, UserPage } from './pages';
 import store from './utils/store';
 import * as loginActions from './features/login';
+import { fetchOrUpdateUser } from './features/users';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
     // getItems returns 'null' as string when no token is set
     if (token && token !== 'null')
       store.dispatch(loginActions.setToken({ token }));
+      store.dispatch(fetchOrUpdateUser());
   }, []);
 
   return (

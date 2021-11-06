@@ -18,7 +18,7 @@ const Header = function () {
   const HeaderRight = () => isLoggedIn ?
     <div>
       <i className="fa fa-user-circle"></i>{' '}
-      <span>{ firstName }</span>{' '}
+      <Link className="main-nav-item" to='/profile'>{ firstName }</Link>{' '}
       <Link className="main-nav-item" to='/' onClick={logout}>
         <i className="fa fa-sign-out"></i>{' '}
         Sign Out
@@ -33,7 +33,7 @@ const Header = function () {
 
   return (
       <nav className="main-nav">
-        <a className="main-nav-logo" href="./index.html">
+        <a className="main-nav-logo" href='./'>
           <img
             className="main-nav-logo-image"
             src={logo}
