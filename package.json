@@ -8,7 +8,8 @@
     "start:back": "cd ./back && yarn dev:server",
     "install:front": "cd ./front && yarn",
     "install:back": "cd ./back && yarn",
-    "install": "yarn install:back && yarn install:front"
+    "install": "yarn install:back && yarn install:front",
+    "populate-db": "cd ./back && yarn populate-db"
   },
   "repository": {
     "type": "git",
