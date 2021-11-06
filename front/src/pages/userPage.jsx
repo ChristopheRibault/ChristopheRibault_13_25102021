@@ -10,6 +10,12 @@ function UserPage() {
   const dispatch = useDispatch();
 
   const { values, handleChange, handleSubmit } = useForm(async (values) => {
+    // Default value to previous value to avoid setting it to null
+    for (const key in values) {
+      if (!values[key] || values[key] === '') {
+        values[key] = user.data[key];
+      }
+    }
     setEditionMode(false);
     dispatch(fetchOrUpdateUser(values));
   });
@@ -31,22 +37,62 @@ function UserPage() {
   return (
     <main className="main bg-dark">
       <div className="header">
-        <h1>Welcome back<br />{`${user?.data?.firstName} ${user?.data?.lastName}`}</h1>
+        <h1>
+          Welcome back
+          <br />
+          {!editionMode && 
+            `${user?.data?.firstName} ${user?.data?.lastName}`
+          }
+        </h1>
         {!editionMode &&
-          <button onClick={() => setEditionMode(true)} className="edit-button">Edit Name</button>
+          <button
+            onClick={() => setEditionMode(true)}
+            className="edit-button"
+          >Edit Name</button>
         }
         {editionMode && 
           <section className='edit-form'>
             <form onSubmit={handleSubmit}>
-              <div className="input-wrapper">
-                <label htmlFor="firstName">Firstname</label>
-                <input type="text" id="firstName" name="firstName" value={values.firstName || ''} onChange={handleChange} />
+              <div className='form-inputs'>
+                <div className="input-wrapper">
+                  <label
+                    className='sr-only'
+                    htmlFor="firstName"
+                  >Firstname</label>
+                  <input
+                    type="text" id="firstName"
+                    name="firstName"
+                    value={values.firstName}
+                    onChange={handleChange}
+                    placeholder={user?.data?.firstName}
+                  />
+                </div>
+                <div className="input-wrapper">
+                  <label
+                    className='sr-only'
+                    htmlFor="lastName"
+                  >Lastname</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={values.lastName}
+                    onChange={handleChange}
+                    placeholder={user?.data?.lastName}
+                  />
+                </div>
               </div>
-              <div className="input-wrapper">
-                <label htmlFor="lastName">Lastname</label>
-                <input type="text" id="lastName" name="lastName" value={values.lastName || ''} onChange={handleChange} />
+              <div className='form-btns'>
+                <button
+                  type='submit'
+                  className="edit-button"
+                >Save</button>
+                <button
+                  onClick={() => setEditionMode(false)}
+                  type='reset'
+                  className="edit-button"
+                >Cancel</button>
               </div>
-              <button type='submit' className="edit-button">Valider</button>
             </form>
           </section>
         }

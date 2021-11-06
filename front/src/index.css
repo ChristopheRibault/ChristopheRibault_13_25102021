@@ -294,6 +294,21 @@ html {
   margin: 0 auto;
 }
 
+.edit-form > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-inputs, .form-btns {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+.form-btns > button {
+  width: 100px;
+}
+
 .transaction-button {
   display: block;
   width: 100%;
