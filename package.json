@@ -1,30 +1,23 @@
 {
-  "name": "argent-bank-api",
-  "version": "0.0.1",
-  "private": true,
-  "description": "Project #10 - Argent Bank",
-  "keywords": [],
-  "author": "",
-  "license": "",
+  "name": "project-10-bank-api",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.6.2",
-    "axios": "^0.19.2",
-    "bcrypt": "^5.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.21",
-    "swagger-ui-express": "^4.1.4",
-    "yamljs": "^0.3.0"
-  },
   "scripts": {
-    "dev:server": "nodemon ./server/server.js",
-    "populate-db": "node ./server/scripts/populateDatabase.js",
-    "server": "node ./server/server.js"
+    "start:front": "cd ./front && yarn start",
+    "start:back": "cd ./back && yarn dev:server",
+    "install:front": "cd ./front && yarn",
+    "install:back": "cd ./back && yarn",
+    "install": "yarn install:back && yarn install:front"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristopheRibault/Project-10-Bank-API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChristopheRibault/Project-10-Bank-API/issues"
+  },
+  "homepage": "https://github.com/ChristopheRibault/Project-10-Bank-API#readme"
 }
