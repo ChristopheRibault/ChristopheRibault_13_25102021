@@ -11,14 +11,14 @@ import * as loginActions from './features/login';
 import { fetchOrUpdateUser } from './features/users';
 
 function App() {
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
     // getItems returns 'null' as string when no token is set
     if (token && token !== 'null')
       store.dispatch(loginActions.setToken({ token }));
       store.dispatch(fetchOrUpdateUser());
-  }, []);
+  }, [token]);
 
   return (
     <div className="App">

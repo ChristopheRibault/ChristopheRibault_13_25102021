@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import fetcher, { fetchReducers } from '../utils/axios';
+import { removeToken } from './login';
 
 const initialState = {
   status: 'void',
@@ -33,6 +34,7 @@ export function fetchOrUpdateUser(updates) {
       dispatch(actions.resolved(data));
     } catch (error) {
       dispatch(actions.rejected(error));
+      dispatch(removeToken());
     }
   };
 }
