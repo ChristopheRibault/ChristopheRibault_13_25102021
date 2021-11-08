@@ -19,13 +19,13 @@ const Header = function () {
     <div>
       <i className="fa fa-user-circle"></i>{' '}
       <Link className="main-nav-item" to='/profile'>{ firstName }</Link>{' '}
-      <Link className="main-nav-item" to='/' onClick={logout}>
+      <Link data-testid='logout-btn' className="main-nav-item" to='/' onClick={logout}>
         <i className="fa fa-sign-out"></i>{' '}
         Sign Out
       </Link>
     </div> :
     <div>
-      <Link className="main-nav-item" to='./login'>
+      <Link data-testid='login-btn' className="main-nav-item" to='./login'>
         <i className="fa fa-user-circle"></i>{' '}
         Sign In
       </Link>

@@ -10,12 +10,6 @@ function UserPage() {
   const dispatch = useDispatch();
 
   const { values, handleChange, handleSubmit } = useForm(async (values) => {
-    // Default value to previous value to avoid setting it to null
-    for (const key in values) {
-      if (!values[key] || values[key] === '') {
-        values[key] = user.data[key];
-      }
-    }
     setEditionMode(false);
     dispatch(fetchOrUpdateUser(values));
   });
