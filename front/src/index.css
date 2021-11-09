@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6,7 +10,7 @@ html {
   color: #2c3e50;
 }
 
-body {
+.App {
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -54,6 +58,7 @@ body {
 .main-nav-item {
   text-decoration: none;
   margin-right: 0.5rem;
+  white-space: nowrap;
 }
 
 .main-nav-item:hover {
@@ -71,7 +76,7 @@ body {
 }
 
 .hero {
-  background-image: url('../img/bank-tree.jpeg');
+  background-image: url('./assets/img/bank-tree.jpeg');
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -245,6 +250,12 @@ body {
   font-weight: bold;
 }
 
+@media (max-width: 420px) {
+  .account-amount {
+    font-size: 2rem;
+  }
+}
+
 .account-amount-description {
   margin: 0;
 }
@@ -272,6 +283,30 @@ body {
 .header {
   color: #fff;
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-form {
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.edit-form > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-inputs, .form-btns {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+.form-btns > button {
+  width: 100px;
 }
 
 .transaction-button {
