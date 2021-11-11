@@ -13,5 +13,6 @@
 1. Populate database with `yarn populate-db`
 1. Start backend server with `yarn start:back`
 1. Start frontend with `yarn start:front`
+1. Or start both with `yarn start`
 1. Open [API documentation](http://localhost:3001/api-docs)
 1. Open [Application](http://localhost:3000/)
