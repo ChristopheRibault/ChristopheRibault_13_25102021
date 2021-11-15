@@ -33,7 +33,7 @@ export const fetchReducers = {
   rejected: (draft, action) => {
     if (draft.status === 'pending' || draft.status === 'updating') {
       draft.status = 'rejected';
-      draft.error = action.payload;
+      draft.error = JSON.stringify(action.payload);
       draft.data = null;
       return;
     }
