@@ -1,13 +1,21 @@
 import { useState } from 'react';
+import { getRememberedLogIn } from '../rememberLogIn';
 
 const useForm = callback => {
-  const [ values, setValues ] = useState({});
+
+  const initialState = getRememberedLogIn() ?? {};
+
+  const [ values, setValues ] = useState(initialState);
   return {
     values,
     handleChange: e => {
+      const { target } = e;
       setValues({
         ...values,
-        [e.target.name]: e.target.value,
+        [target.name]: 
+          target.type === 'checkbox' ?
+            target.checked :
+            target.value,
       });
     },
     handleSubmit: e => {
